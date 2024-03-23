@@ -12,14 +12,13 @@
   - NextJS is a React framework for building web applications
 
 #### Why learn Next.js?
-- Next.js simplifies the process of building a web application for production
-  1. Routing
-  2. API routes
-  3. Rendering
-  4. Data fetching
-  5. Styling
-  6. Optimization
-  7. Dev and prod build system
+1. Routing
+2. API routes
+3. Rendering
+4. Data fetching
+5. Styling
+6. Optimization
+7. Dev and prod build system
 
 #### Prerequisites
 - HTML, CSS, JavaScript strong unserstanding
