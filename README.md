@@ -87,3 +87,18 @@
 ---
 
 ## 7 : Dynamic Routes
+- Follow the same rule as above but create a folder with name inside [] for dynamic route
+
+
+***
+
+## 8 : Nested Dynamic Routes
+
+- It is same concept just combine #6 and #7 togather
+- Make sure that your {params} will have same object name as your dynamic folder ( If you dont't understand this then check the file structure for products and go through code )
+
+
+***
+
+## 3 : Catch All Segments
+- Simply use the spead Operator for folder name wrap the folder in [[]] format
