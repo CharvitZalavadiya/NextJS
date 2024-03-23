@@ -55,7 +55,9 @@
   version 18 which was quickly embraced by Next.js
 - The architecture introduces a new way of creating React components, splitting
   them into two types:
+
   - Server components
+
     - In Next.js, all components are Server components by default
     - They have the ability to run tasks like reading files or fetching data from a database
     - However, they don't have the ability to use hooks or handle user interactions
@@ -63,3 +65,25 @@
   - Client components
     - To create a Client component, it's necessary to add "use client" at the top of the component file
     - Client components can't perform tasks like reading files, but they have the ability to use hooks and manage interactions
+
+---
+
+## 5 : Routing
+
+- Next.js has a file-system based routing mechanism
+- URL paths that users can access in the browser are defined by files and folders in your codebase
+
+- Routing Conventions
+  - All routes must be placed inside the app folder
+  - Every file that corresponds to a route must be named as 'page' and extension are highly prefered to be in .js or .jsx or .ts or .tsx
+  - Every folder corresponds to a path segment in the browser URL
+
+---
+
+## 6 : Nested Routes
+
+- For example if your routes is like : http://www.localhost:3000/blog/first then create folder in app named blog with page file and inside blog folder create new folder named first with page file
+
+---
+
+## 7 : Dynamic Routes
