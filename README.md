@@ -100,5 +100,5 @@
 
 ***
 
-## 3 : Catch All Segments
+## 9 : Catch All Segments
 - Simply use the spead Operator for folder name wrap the folder in [[]] format
