@@ -133,14 +133,57 @@
   - And finally, for avoiding potential naming conflicts with future Next.js file conventions
   - If you want to include an underscore in URL segments, you can prefix the folder name with "%5F," which is the URL-encoded form of an underscore
 
-
-***
+---
 
 ## 13 : Route Groups
+
 - Allows us to logically group our routes and project files without affecting the URL path structure
 - Let's implement authentication routes
+
   - Register
   - Login
   - Forgot password
 
 - Wrap the folder with () to make a Route Groups
+
+---
+
+## 14 : Layouts
+
+- A page is Ul that is unique to a route
+- A layout is Ul that is shared between multiple pages in the app
+
+- How to Create Layouts
+  - You can define a layout by default exporting a React component from a layout.js or layout.tsx file
+  - That component should accept a children prop that will be populated with a child page during rendering
+
+---
+
+## 15 : Nested Layout
+
+- It is as simple as routes
+- For the specific route when you need the different layouts at that folder simply create the file with name "layout.tsx" and main layout will remain same as ago but for that specific route layout will be changed
+
+---
+
+## 16 : Route Group Layout
+
+- Route Group uses:
+  - To organize your project in a manner that doesn't affect the URL
+  - To electively apply a layout to certain segments while leaving others unchanged
+
+---
+
+## 17 : Routing Metadata
+- Ensuring proper search engine optimization (SEO) is crucial for increasing visibility and attracting users
+- Next.js introduced the Metadata API which allows you to define metadata for each page
+- Metadata ensures accurate and relevant information is displayed when your pages are shared or indexed
+
+- Configuring Metadata
+  - Export a static metadata object
+  - Export a dynamic generateMetadata function
+  
+-Metadata rules
+  - Both layout.tsx and page.tsx files can export metadata. If defined in a layout, it applies to all pages in that layout, but if defined in a page, it applies only to that page
+  - Metadata is read in order, from the root level down to the final page level
+  - When there's metadata in multiple places for the same route, they get combined, but page metadata will replace layout metadata if they have the same properties
