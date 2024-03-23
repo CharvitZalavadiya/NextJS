@@ -1,5 +1,7 @@
 # NextJS
 
+***
+
 ## 1 : Introduction
 
 #### What is Next.js?
@@ -26,7 +28,7 @@
 
 ***
 
-## 1 : Hello World
+## 2 : Hello World
 - To create a new project write the following command : 
   - npx create-next-app@latest
   - then configure your project as per needed
