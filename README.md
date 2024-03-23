@@ -1,10 +1,11 @@
 # NextJS
 
-***
+---
 
 ## 1 : Introduction
 
 #### What is Next.js?
+
 - It uses React for building user interfaces
 - Provides additional features that enable you to build production-ready applications
 - These features include routing, optimized rendering, data fetching, bundling, compiling, and more
@@ -13,6 +14,7 @@
 - NextJS is a React framework for building web applications
 
 #### Why learn Next.js?
+
 1. Routing
 2. API routes
 3. Rendering
@@ -22,16 +24,42 @@
 7. Dev and prod build system
 
 #### Prerequisites
+
 - HTML, CSS, JavaScript strong unserstanding
 - ES6+ features
 - React fundamentals
 
-***
+---
 
 ## 2 : Hello World
-- To create a new project write the following command : 
+
+- To create a new project write the following command :
+
   - npx create-next-app@latest
   - then configure your project as per needed
 
-- To start the server enter the following command : 
+- To start the server enter the following command :
   - npm run dev
+
+---
+
+## 3 : Project Structure
+
+- Go through video for better understanding
+
+---
+
+## 4 : React Server Components (RSC)
+
+- React Server Components is a new architecture introduced by the React team in
+  version 18 which was quickly embraced by Next.js
+- The architecture introduces a new way of creating React components, splitting
+  them into two types:
+  - Server components
+    - In Next.js, all components are Server components by default
+    - They have the ability to run tasks like reading files or fetching data from a database
+    - However, they don't have the ability to use hooks or handle user interactions
+
+  - Client components
+    - To create a Client component, it's necessary to add "use client" at the top of the component file
+    - Client components can't perform tasks like reading files, but they have the ability to use hooks and manage interactions
