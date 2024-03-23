@@ -3,13 +3,12 @@
 ## 1 : Introduction
 
 #### What is Next.js?
-- Next.js
-  - It uses React for building user interfaces
-  - Provides additional features that enable you to build production-ready applications
-  - These features include routing, optimized rendering, data fetching, bundling, compiling, and more
-  - You don't need to install additional packages as Next.js provides everything you need
-  - Opinions and conventions should be followed to implement these features
-  - NextJS is a React framework for building web applications
+- It uses React for building user interfaces
+- Provides additional features that enable you to build production-ready applications
+- These features include routing, optimized rendering, data fetching, bundling, compiling, and more
+- You don't need to install additional packages as Next.js provides everything you need
+- Opinions and conventions should be followed to implement these features
+- NextJS is a React framework for building web applications
 
 #### Why learn Next.js?
 1. Routing
