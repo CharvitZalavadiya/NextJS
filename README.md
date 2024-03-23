@@ -102,3 +102,5 @@
 
 ## 9 : Catch All Segments
 - Simply use the spead Operator for folder name wrap the folder in [[]] format
+
+- So finally you folder will look like docs/[[...slug]]
