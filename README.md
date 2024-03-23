@@ -87,26 +87,60 @@
 ---
 
 ## 7 : Dynamic Routes
+
 - Follow the same rule as above but create a folder with name inside [] for dynamic route
 
-
-***
+---
 
 ## 8 : Nested Dynamic Routes
 
 - It is same concept just combine #6 and #7 togather
 - Make sure that your {params} will have same object name as your dynamic folder ( If you dont't understand this then check the file structure for products and go through code )
 
-
-***
+---
 
 ## 9 : Catch All Segments
+
 - Simply use the spead Operator for folder name wrap the folder in [[]] format
 
 - So finally you folder will look like docs/[[...slug]]
 
-***
+---
 
 ## 10 : Not Found Page
+
 - For the custom not found page you need to create a new file in app folder name as 'not-found' and then display your message as you want
 - Make sure that the name of the file must be same as 'not-found'
+
+---
+
+## 11 : File Colocation
+
+- Access the video for better understanding
+
+---
+
+## 12 : Private Folders
+
+- A private folder indicates that it is a private implementation detail and should not be considered by the routing system
+- The folder and all its subfolders are excluded from routing
+- Prefix the folder name with an underscore
+
+- Uses of Private Folders
+  - For separating Ul logic from routing logic
+  - For consistently organizing internal files across a project
+  - For sorting and grouping files in code editors
+  - And finally, for avoiding potential naming conflicts with future Next.js file conventions
+  - If you want to include an underscore in URL segments, you can prefix the folder name with "%5F," which is the URL-encoded form of an underscore
+
+
+***
+
+## 13 : Route Groups
+- Allows us to logically group our routes and project files without affecting the URL path structure
+- Let's implement authentication routes
+  - Register
+  - Login
+  - Forgot password
+
+- Wrap the folder with () to make a Route Groups
