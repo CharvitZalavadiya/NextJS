@@ -23,3 +23,11 @@
 - HTML, CSS, JavaScript strong unserstanding
 - ES6+ features
 - React fundamentals
+
+## 1 : Hello World
+- To create a new project write the following command : 
+  - npx create-next-app@latest
+  - then configure your project as per needed
+
+- To start the server enter the following command : 
+  - npm run dev
