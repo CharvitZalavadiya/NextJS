@@ -24,6 +24,8 @@
 - ES6+ features
 - React fundamentals
 
+***
+
 ## 1 : Hello World
 - To create a new project write the following command : 
   - npx create-next-app@latest
