@@ -104,3 +104,9 @@
 - Simply use the spead Operator for folder name wrap the folder in [[]] format
 
 - So finally you folder will look like docs/[[...slug]]
+
+***
+
+## 10 : Not Found Page
+- For the custom not found page you need to create a new file in app folder name as 'not-found' and then display your message as you want
+- Make sure that the name of the file must be same as 'not-found'
