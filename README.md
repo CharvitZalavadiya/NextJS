@@ -244,7 +244,7 @@ is not preserved, and effects are re-synchronized
 
 - Benefits
 1. You can display the loading state as soon as a user navigates to a new route
-  - The immediate feedback reassures users that their action has been acknowledged, reduces perceived loading times, and makes the application feel more responsive.
+   - The immediate feedback reassures users that their action has been acknowledged, reduces perceived loading times, and makes the application feel more responsive.
 2. Next.js allows the creation of shared layouts that remain interactive while new route segments are loading
-  - Users can continue interacting with certain parts of the application, such as a
+   - Users can continue interacting with certain parts of the application, such as a
 navigation menu or sidebar, even if the main content is still being fetched
