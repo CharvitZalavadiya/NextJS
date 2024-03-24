@@ -259,4 +259,4 @@ navigation menu or sidebar, even if the main content is still being fetched
   - Add functionality to attempt to recover from an error without a full page reload
 
 - All types of files so far
-  - <img title="a title" alt="Alt text" src="C:/Users/charv/Pictures/Screenshots/nextjs1.png>
+  - ![Alt text](C:/Users/charv/Pictures/Screenshots/nextjs1.png"a title")
