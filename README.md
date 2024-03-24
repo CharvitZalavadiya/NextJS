@@ -175,6 +175,7 @@
 ---
 
 ## 17 : Routing Metadata
+
 - Ensuring proper search engine optimization (SEO) is crucial for increasing visibility and attracting users
 - Next.js introduced the Metadata API which allows you to define metadata for each page
 - Metadata ensures accurate and relevant information is displayed when your pages are shared or indexed
@@ -182,27 +183,26 @@
 - Configuring Metadata
   - Export a static metadata object
   - Export a dynamic generateMetadata function
-  
 - Metadata rules
   - Both layout.tsx and page.tsx files can export metadata. If defined in a layout, it applies to all pages in that layout, but if defined in a page, it applies only to that page
   - Metadata is read in order, from the root level down to the final page level
   - When there's metadata in multiple places for the same route, they get combined, but page metadata will replace layout metadata if they have the same properties
 
-  
-***
+---
 
 ## 18 : Title Metadata
 
 - The title field's primary purpose is to define the document title
 - It can be either a string or an object
 
-
-***
+---
 
 ## 19 : Link Component Navigation
+
 - File based routing
 - We manually entered the URLs in the browser's address bar to navigate to the different routes
 - Users rely on Ul elements like links to navigate
+
   - Clicking on them or
   - Through programmatic navigation after completing an action
 
@@ -211,13 +211,16 @@
 - To use it, we need to import it from "next/link"
 - "replace" is used when the user clicks on the link then it will work normally but when user goes to back then it will rediresct to the homepage
 
-
-***
+---
 
 ## 20 : Active Links
+
 - Note one thing that all react components are server side components by default and hooks can be use in client side so make sure that whenever you used the hooks write "use client" for client side work
 
+---
+
 ## 21 : Navigating Programatically
+
 - router.push("...") for specific page navigation
 - router.replace("...") for home page navigation
 - router.back() for back page navigation "without any argument in ()"
