@@ -359,3 +359,18 @@
 - Route handlers are also great for making external API requests
 - Route handlers run server-side, ensuring that sensitive information like private keys remains secure and never gets shipped to the browser
 - Route Handlers are the equivalent of API routes in Page router
+
+***
+
+## 34 : GET Request
+- Go through video and it's github repo or own code
+
+***
+
+## 35 : POST Request
+- Go through video and it's github repo or own code
+
+***
+
+## 36 : Dynamic Route Handlers
+- Go through video and it's github repo or own code
