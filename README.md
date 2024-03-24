@@ -258,5 +258,10 @@ navigation menu or sidebar, even if the main content is still being fetched
   - Isolate errors to affected segments while keeping the rest of the application functional
   - Add functionality to attempt to recover from an error without a full page reload
 
-- All types of files so far
-  - ![Alt text](C:/Users/charv/Pictures/Screenshots/nextjs1.png"a title")
+- All types of files so far in the descending precedence
+  1. layout
+  2. template
+  3. error
+  4. loading
+  5. not-found
+  6. page
