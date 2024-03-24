@@ -226,33 +226,38 @@
 - router.back() for back page navigation "without any argument in ()"
 - router.forward() for next page navigation "without any argument in ()"
 
-***
+---
 
 ## 22 : Templates
+
 - Templates are similar to layouts in that they wrap each child layout or page
 - But, with templates, when a user navigates between routes that share a template, a new instance of the component is mounted, DOM elements are recreated, state
-is not preserved, and effects are re-synchronized
+  is not preserved, and effects are re-synchronized
 - A template can be defined by exporting a default React component from a template.js or template.tsx file
 - Similar to layouts, templates also should accept a children prop which will render the nested segments in the route.
 
-***
+---
 
 ## 23 : Loading UI
+
 - loading.tsx
 - This file allows us to create loading states that are displayed to users while a specific route segment's content is loading
 - The loading state appears immediately upon navigation, giving users the assurance that the application is responsive and actively loading content
 
 - Benefits
+
 1. You can display the loading state as soon as a user navigates to a new route
    - The immediate feedback reassures users that their action has been acknowledged, reduces perceived loading times, and makes the application feel more responsive.
 2. Next.js allows the creation of shared layouts that remain interactive while new route segments are loading
    - Users can continue interacting with certain parts of the application, such as a
-navigation menu or sidebar, even if the main content is still being fetched
+     navigation menu or sidebar, even if the main content is still being fetched
 
-***
+---
 
 ## 24 : Error Handling
+
 - error.tsx
+
   - Automatically wrap a route segment and its nested children in a React Error Boundary
   - Create error Ul tailored to specific segments using the file-system hierarchy to adjust granularity
   - Isolate errors to affected segments while keeping the rest of the application functional
@@ -266,9 +271,42 @@ navigation menu or sidebar, even if the main content is still being fetched
   5. not-found
   6. page
 
-***
+---
 
 ## 25 : Recovering From Error
+
 - Simply add the reset prop in error.tsx file and add a button for try again and onClick call the reset
 
 - For better understanding go through the code in [reviewID]
+
+---
+
+## 26 : Handling Errors in Nested Routes
+
+- Errors bubble up to the closest parent error boundary
+- An error.tsx file will cater to errors for all its nested child segments
+- By positioning error.ts files at different levels in the nested folders of a route, you can achieve a more granular level of error handling
+- Go through video for better understanding
+
+---
+
+## 27 : Handling Errors in Layouts
+
+- An error.tsx file will handle errors for all its nested child segments
+- The error boundary does not catch errors thrown here because it's nested inside the layouts component
+
+---
+
+## 28 : Parallel Routes
+- Parallel routes in Next.js are defined using a feature known as slots
+- Slots help structure our content in a modular fashion To define a slot, we use the @folder naming convention
+- Each slot is then passed as a prop to its corresponding layout.tsx file.
+
+- Benefits
+  - A clear benefit of parallel routes is their ability to split a single layout into various slots, making the code more manageable
+  - Independent route handling
+    - Each slot of your layout, such as user analytics or revenue metrics, can have its own loading and error states
+    - This granular control is particularly beneficial in scenarios where different sections of the page load at varying speeds or encounter unique errors
+  - Sub-navigation
+    - Each slot of your dashboard can essentially function as a mini-application, complete with its own navigation and state management
+    - This is especially useful in a complex application such as our dashboard where different sections serve distinct purposes.
