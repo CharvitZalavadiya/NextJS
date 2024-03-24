@@ -310,3 +310,18 @@
   - Sub-navigation
     - Each slot of your dashboard can essentially function as a mini-application, complete with its own navigation and state management
     - This is especially useful in a complex application such as our dashboard where different sections serve distinct purposes.
+
+---
+
+## 29 : Unmatched Routes
+- Navigation from the Ul
+  - In the case of navigation within the Ul, Next.js retains the previously active state of a slot regardless of changes in the URL.
+
+- Page reload
+  - Next.js immediately searches for a default.ts file within each unmatched slot
+  - The presence of this file is critical, as it provides the default content that Next.js will render in the user interface
+  - If this default.tsx file is missing in any of the unmatched slots for the current route, Next.js will render a 404 error.
+
+- default.tsx
+  - The 'default.tsx' file in Next.js serves as a fallback to render content when the framework cannot retrieve a slot's active state from the current URL
+  - You have complete freedom to define the Ul for unmatched routes: you can either mirror the content found in page.tsx or craft an entirely custom view
