@@ -265,3 +265,10 @@ navigation menu or sidebar, even if the main content is still being fetched
   4. loading
   5. not-found
   6. page
+
+***
+
+## 25 : Recovering From Error
+- Simply add the reset prop in error.tsx file and add a button for try again and onClick call the reset
+
+- For better understanding go through the code in [reviewID]
