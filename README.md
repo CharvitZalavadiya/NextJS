@@ -325,3 +325,37 @@
 - default.tsx
   - The 'default.tsx' file in Next.js serves as a fallback to render content when the framework cannot retrieve a slot's active state from the current URL
   - You have complete freedom to define the Ul for unmatched routes: you can either mirror the content found in page.tsx or craft an entirely custom view
+
+***
+
+## 30 : Conditional Routing
+- Create a new file for another route and apply ternary condition for routing.
+
+***
+
+## 31 : Intercepting Routes
+- Intercepting routes allow you to intercept or stop the default routing behaviour to present an alternate view or component when navigating through the Ul, while still preserving the intended route for scenarios like page reloads
+- This can be useful if you want to show a route while keeping the context of the current page
+
+- Conventions
+  - (.) to match segments on the same level
+  - (..) to match segments one level above
+  - (..)(..) to match segments two levels above (Currently in Issue)
+  - (...) to match segments from the root app directory
+
+***
+
+## 32 : Parallel Intercepting Routing
+- Go through video and it's github repo
+
+***
+
+## 33 : Route Handlers
+
+- We've learnt how to route to pages
+- We can also create custom request handlers for our routes using a feature called route handlers
+- Unlike page routes, which respond with HTML content, route handlers allow you to create RESTful endpoints, giving you full control over the response
+- There is no overhead of having to create and configure a separate server
+- Route handlers are also great for making external API requests
+- Route handlers run server-side, ensuring that sensitive information like private keys remains secure and never gets shipped to the browser
+- Route Handlers are the equivalent of API routes in Page router
