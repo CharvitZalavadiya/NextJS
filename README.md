@@ -374,3 +374,29 @@
 
 ## 36 : Dynamic Route Handlers
 - Go through video and it's github repo or own code
+
+***
+
+## 37 : PATCH Request
+- Go through video and it's github repo or own code
+
+***
+
+## 38 : DELETE Request
+- Go through video and it's github repo or own code
+
+***
+
+## 39 : URL Query Parameter
+- During search url will have "?qurey=..." and search functionality is implemented in "../comments/route.ts"
+
+- Go through video and it's github repo or own code
+
+***
+
+## 40 : Redirects in Route Handler
+- When user search for the data that is not available then simply add the {redirect} from "next/navigation" to the file then in GET request function before you show the data add condition and give the respect url that you want you want to redirect the user
+
+***
+
+## 41 : Headers in Route Handler
