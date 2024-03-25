@@ -298,6 +298,7 @@
 ---
 
 ## 28 : Parallel Routes
+
 - Parallel routes in Next.js are defined using a feature known as slots
 - Slots help structure our content in a modular fashion To define a slot, we use the @folder naming convention
 - Each slot is then passed as a prop to its corresponding layout.tsx file.
@@ -314,10 +315,13 @@
 ---
 
 ## 29 : Unmatched Routes
+
 - Navigation from the Ul
+
   - In the case of navigation within the Ul, Next.js retains the previously active state of a slot regardless of changes in the URL.
 
 - Page reload
+
   - Next.js immediately searches for a default.ts file within each unmatched slot
   - The presence of this file is critical, as it provides the default content that Next.js will render in the user interface
   - If this default.tsx file is missing in any of the unmatched slots for the current route, Next.js will render a 404 error.
@@ -326,14 +330,16 @@
   - The 'default.tsx' file in Next.js serves as a fallback to render content when the framework cannot retrieve a slot's active state from the current URL
   - You have complete freedom to define the Ul for unmatched routes: you can either mirror the content found in page.tsx or craft an entirely custom view
 
-***
+---
 
 ## 30 : Conditional Routing
+
 - Create a new file for another route and apply ternary condition for routing.
 
-***
+---
 
 ## 31 : Intercepting Routes
+
 - Intercepting routes allow you to intercept or stop the default routing behaviour to present an alternate view or component when navigating through the Ul, while still preserving the intended route for scenarios like page reloads
 - This can be useful if you want to show a route while keeping the context of the current page
 
@@ -343,12 +349,13 @@
   - (..)(..) to match segments two levels above (Currently in Issue)
   - (...) to match segments from the root app directory
 
-***
+---
 
 ## 32 : Parallel Intercepting Routing
+
 - Go through video and it's github repo
 
-***
+---
 
 ## 33 : Route Handlers
 
@@ -360,43 +367,100 @@
 - Route handlers run server-side, ensuring that sensitive information like private keys remains secure and never gets shipped to the browser
 - Route Handlers are the equivalent of API routes in Page router
 
-***
+---
 
 ## 34 : GET Request
+
 - Go through video and it's github repo or own code
 
-***
+---
 
 ## 35 : POST Request
+
 - Go through video and it's github repo or own code
 
-***
+---
 
 ## 36 : Dynamic Route Handlers
+
 - Go through video and it's github repo or own code
 
-***
+---
 
 ## 37 : PATCH Request
+
 - Go through video and it's github repo or own code
 
-***
+---
 
 ## 38 : DELETE Request
+
 - Go through video and it's github repo or own code
 
-***
+---
 
 ## 39 : URL Query Parameter
+
 - During search url will have "?qurey=..." and search functionality is implemented in "../comments/route.ts"
 
 - Go through video and it's github repo or own code
 
-***
+---
 
 ## 40 : Redirects in Route Handler
+
 - When user search for the data that is not available then simply add the {redirect} from "next/navigation" to the file then in GET request function before you show the data add condition and give the respect url that you want you want to redirect the user
 
-***
+---
 
 ## 41 : Headers in Route Handler
+
+- HTTP headers represent the metadata associated with an API request and response.
+
+- Request Headers
+
+  - These are sent by the client, such as a web browser, to the server. They contain essential information about the request, which helps the server understand and process it correctly.
+  - 'User-Agent' which identifies the browser and operating system to the server.
+  - 'Accept' which indicates the content types like text, video, or image formats that the client can process.
+  - 'Authorization' header used by the client to authenticate itself to the server
+
+- Response Headers
+  - These are sent back from the server to the client. They provide information about the server and the data being sent in the response.
+  - 'Content-Type' header which indicates the media type of the response. It tells the client what the data type of the returned content is, such as text/html for HTML documents, application/json for JSON data, etc.
+
+---
+
+## 42 : Cookie in Route Handler
+
+- Cookies are small pieces of data that a server sends to a user's web browser
+- The browser may store the cookie and send it back to the same server with later requests
+- Cookies are mainly used for three purposes
+  - Session management like logins and shopping carts
+  - Personalization like user preferences and themes
+  - Tracking like recording and analyzing user behavior.
+
+---
+
+## 43 : Caching in Route Handler
+
+- Route Handlers are cached by default when using the GET method with the Response object in Next.js
+
+- How to opt out of caching?
+  - dynamic mode in Segment Config Option
+  - using the Request object with the GET method
+  - employing dynamic functions like headers() and cookies()
+  - using any HTTP method other than GET
+
+---
+
+## 44 : Middleware
+
+- Middleware in Next.js is a powerful feature that offers a robust way to intercept and control the flow of requests and responses within your applications
+- It does this at a global level significantly enhancing features like redirection, URL rewrites, authentication, headers and cookies management, and more.
+- Middleware allows us to specify paths where it will be active
+  - Custom matcher config
+  - Conditional statements.
+
+---
+
+## 45 : Rendering
