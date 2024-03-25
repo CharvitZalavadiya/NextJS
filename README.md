@@ -464,6 +464,7 @@
 ---
 
 ## 45 : Rendering
+
 - Rendering is the process that transforms the code you write into user interfaces
 - In Next.js, choosing the right time and place to do this rendering is vital for building a performant application CSR, SSR and RSCs
 - Rendering in React → Rendering in Next.js
@@ -471,10 +472,13 @@
 ---
 
 ## 46 : Client Side Rendering
+
 - Rendering in React
+
   - You'll remember React being the go-to library for creating Single Page Applications (SPAs)
 
 - Client Side Rendering
+
   - This method of rendering, where the component code is transformed into a user interface directly within the browser (the client), is known as client-side rendering (CSR)
   - CSR quickly became the standard for SPAs (Single Page Applications), with widespread adoption
   - It wasn't long before developers began noticing some inherent drawbacks to this approach
@@ -489,16 +493,20 @@
 ---
 
 ## 47 : Server Side Rendering
+
 - Server-side Solutions
+
   - It significantly improves SEO because search engines can easily index the server-rendered content
   - Users can immediately see the page HTML content, instead of a blank screen or loading spinner
 
 - Hydration
+
   - During hydration, React takes control in the browser, reconstructing the component tree in memory based on the static HTML that was served
   - It carefully plans the placement of interactive elements within this tree. Then, React proceeds to bind the necessary JavaScript logic to these elements
   - This involves initializing the application state, attaching event handlers for actions such as clicks and mouseovers, and setting up any other dynamic functionalities required for a fully interactive user experience
 
 - Server-side Solutions
+
   1. Static Site Generation (SSG)
      - SSG occurs at build time, when the application is deployed on the server
      - This results in pages that are already rendered and ready to serve
@@ -506,6 +514,7 @@
   2. Server-Side Rendering (SSR)
      - SSR, on the other hand, renders pages on-demand in response to user requests
      - It is suitable for personalized content like social media feeds, where the HTML depends on the logged-in user
+
   - Server-Side Rendering (SSR) was a significant improvement over Client-Side Rendering (CSR), providing faster initial page loads and better SEO
 
 - Drawbacks of SSR
@@ -525,3 +534,48 @@
      3. hydrate the entire page
      - Create an "all or nothing" waterfall problem that spans from the server to the client, where each issue must be resolved before moving to the next one
      - This is inefficient if some parts of your app are slower than others, as is often the case in real-world apps
+
+---
+
+## 48 : Suspense of SSR
+
+- Use the <Suspense> component to unlock two major SSR features:
+
+  1. HTML streaming on the server
+  2. Selective hydration on the client
+
+- HTML streaming on the Server
+
+  - You don't have to fetch everything before you can show anything
+    -If a particular section delays the initial HTML, it can be seamlessly integrated into the stream later
+  - This is the essence of how Suspense facilitates server-side HTML streaming
+
+- The other challenge
+
+  - Until the JavaScript for the main section is loaded, client-side app hydration cannot start
+  - And if the JavaScript bundle for the main section is large, this could significantly delay the process
+
+- Code splitting
+  - Code splitting allows you to mark specific code segments as not immediately necessary for loading, signalling your bundler to segregate them into separate '<script> tags'
+  - Using 'React.lazy' for code splitting enables you to separate the main section's code from the primary JavaScript bundle
+  - The JavaScript containing React and the code for the entire application, excluding the main section, can now be downloaded independently by the client, without having to wait for the main section's code
+
+- Selective Hydration on the Client
+  - By wrapping the main section within <Suspense>, you've indicated to React that it should not prevent the rest of the page from not just streaming but also from hydrating
+  - This feature, called selective hydration allows for the hydration of sections as they become available, before the rest of the HTML and the JavaScript code are fully downloaded
+  - Thanks to Selective Hydration, a heavy piece of JS doesn't prevent the rest of the page from becoming interactive
+  - Selective Hydration offers a solution to the third issue: the necessity to "hydrate everything to interact with anything"
+  - React begins hydrating as soon as possible, enabling interactions with elements like the header and side navigation without waiting for the main content to be hydrated
+  - This process is managed automatically by React
+  - In scenarios where multiple components are awaiting hydration, React prioritizes hydration based on user interactions
+
+- Drawbacks of Suspense SSR
+  - First, even though JavaScript code is streamed to the browser asynchronously, eventually, the entire code for a web page must be downloaded by the user
+    - As applications add more features, the amount of code users need to download also grows. This leads to an important question:
+      - should users really have to download so much data?
+  - Second, the current approach requires that all React components undergo hydration on the client-side, irrespective of their actual need for interactivity
+    - This process can inefficiently spend resources and extend the loading times and time to interactivity for users, as their devices need to process and render components that might not even require client-side interaction. This leads to another question:
+      - should all components be hydrated, even those that don't need interactivity?
+  - Third, in spite of servers' superior capacity for handling intensive processing tasks, the bulk of JavaScript execution still takes place on the user's device
+    - This can slow down the performance, especially on devices that are not very powerful. This leads to another important question:
+      - should so much of the work be done on the user's device?
