@@ -572,10 +572,138 @@
 - Drawbacks of Suspense SSR
   - First, even though JavaScript code is streamed to the browser asynchronously, eventually, the entire code for a web page must be downloaded by the user
     - As applications add more features, the amount of code users need to download also grows. This leads to an important question:
-      - should users really have to download so much data?
+    - should users really have to download so much data?
   - Second, the current approach requires that all React components undergo hydration on the client-side, irrespective of their actual need for interactivity
     - This process can inefficiently spend resources and extend the loading times and time to interactivity for users, as their devices need to process and render components that might not even require client-side interaction. This leads to another question:
-      - should all components be hydrated, even those that don't need interactivity?
+    - should all components be hydrated, even those that don't need interactivity?
   - Third, in spite of servers' superior capacity for handling intensive processing tasks, the bulk of JavaScript execution still takes place on the user's device
     - This can slow down the performance, especially on devices that are not very powerful. This leads to another important question:
-      - should so much of the work be done on the user's device?
+    - should so much of the work be done on the user's device?
+
+---
+
+## 49 : React Server Components (RSCs)
+- RSC represent a new architecture designed by the React team
+- This approach aims to leverage the strengths of both server and client environments, optimizing for efficiency, load times, and interactivity
+- The architecture introduces a dual-component model
+  - Client Components
+  - Server Components
+- This distinction is not based on the functionality of the components but rather on where they execute and the specific environments they are designed to interact with
+
+- Client Components
+  - Client Components are the familiar React components we've been using
+  - They are typically rendered on the client-side (CSR) but, they can also be rendered to HTML on the server (SSR), allowing users to immediately see the page's HTML content rather than a blank screen
+  - Components that primarily run on the client but can (and should) also be executed once on the server as an optimization strategy
+  - Client Components have access to the client environment, such as the browser, allowing them to use state, effects, and event listeners to handle interactivity and also access browser-exclusive APIs like geolocation or localStorage, allowing you to build Ul for specific use cases
+  - In fact, the term "Client Component" doesn't signify anything new; it simply helps differentiate these components from the newly introduced Server Components
+
+- Server Components
+  - Server Components represent a new type of React component specifically designed to operate exclusively on the server
+  - And unlike client components, their code stays on the server and is never downloaded to the client
+  - This design choice offers multiple benefits to React applications
+
+- Benefits of Server Components
+  - Reduced Bundle Sizes
+    - Server Components do not send code to the client, allowing large dependencies to remain server-side
+    - This benefits users with slower internet connections or less capable devices by eliminating the need to download, parse, and execute JavaScript for these components
+    - Additionally, it removes the hydration step, speeding up app loading and interaction
+  - Direct Access to Server-side Resources
+    - By having direct access to server-side resources like databases or file systems, Server Components enable efficient data fetching and rendering without needing additional client-side processing
+    - Leveraging the server's computational power and proximity to data sources, they manage compute-intensive rendering tasks and send only interactive pieces of code to the client
+  - Enhanced Security
+    - Server Components' exclusive server-side execution enhances security by keeping sensitive data and logic, including tokens and API keys, away from the client-side
+  - Improved Data Fetching
+    - Server Components enhance data fetching efficiency
+    - Typically, when fetching data on the client-side using useEffect, a child component cannot begin loading its data until the parent component has finished loading its own
+    - This sequential fetching of data often leads to poor performance
+    - The main issue is not the round trips themselves, but that these round trips are made from the client to the server
+    - Server Components enable applications to shift these sequential round trips to the server side
+    - By moving this logic to the server, request latency is reduced, and overall performance is improved, eliminating client-server "waterfalls"
+  - Caching
+    - Rendering on the server enables caching of the results, which can be reused in subsequent requests and across different users
+    - This approach can significantly improve performance and reduce costs by minimizing the amount of rendering and data fetching required for each request
+  - Faster Initial Page Load and First Contentful Paint
+    - Sixth, Initial Page Load and First Contentful Paint (FCP) are significantly improved with Server Components
+    - By generating HTML on the server, pages become immediately visible to users without the delay of downloading, parsing, and executing JavaScript
+  - Improved SEO
+    - Regarding Search Engine Optimization (SEO), the server-rendered HTML is fully accessible to search engine bots, enhancing the indexability of your pages
+  - Efficient Streaming
+    - Server Components allows the rendering process to be divided into manageable chunks, which are then streamed to the client as soon as they are ready
+    - This approach allows users to start seeing parts of the page earlier, eliminating the need to wait for the entire page to finish rendering on the server
+
+- RSC
+  - Server Components take charge of data fetching and static rendering, while Client Components are tasked with rendering the interactive elements of the application
+  - The bottom line is that the RSC architecture enables React applications to leverage the best aspects of both server and client rendering, all while using a single language, a single framework, and a cohesive set of APls
+
+---
+
+## 50 : Server and Client Components
+- In the RSC architecture and by extension in the Next.js app router, components are server components by default
+- To use client components, you must include the "use client" directive at the top
+- Server components are rendered only on the server
+- Client components are rendered once on the server and then on the client
+
+---
+
+## 51 : RSC Rendering Cycle
+- Go through the video for better understanding
+
+---
+
+## 52 : Static Rendering
+- Static rendering is a server rendering strategy where we generate HTML pages at the time of building our application
+- This approach allows the page to be built once, cached by a CDN, and served to the client almost instantly
+- This optimization also enables you to share the result of the rendering work among different users, resulting in a significant performance boost for your application
+- Static rendering is particularly useful for blog pages, e-commerce product pages, documentation, and marketing pages
+
+- How to Statically Render?
+  - Static rendering is the default rendering strategy in the app router
+  - All routes are automatically prepared at build time without additional setup
+
+- Production Server vs Dev Server
+  - For production, an optimized build is created once, and you deploy that build
+  - A development server, on the other hand, focuses on the developer experience
+  - We can't afford to build our app once, make changes, rebuild, and so on
+  - For production builds, a page will be pre-rendered once when we run the build command
+  - In development mode, a page will be pre-rendered for every request
+
+- Prefetching
+  - Prefetching is a technique used to preload a route in the background before the user navigates to it
+  - Routes are automatically prefetched as they become visible in the user's viewport, either when the page first loads or as it comes into view through scrolling
+  - For static routes, the entire route is prefetched and cached by default
+  - When we load the homepage, Next.js prefetches the About and Dashboard routes, keeping them ready for instant navigation
+
+- Summary
+  - Static rendering is a strategy where the HTML is generated at build time
+  - Along with the HTML, the RSC payload is created for each component, and JavaScript chunks are produced for client-side component hydration in the browser
+  - If you navigate directly to a page route, the corresponding HTML file is served
+  - If you navigate to the route from a different one, the route is created on the client side using the RSC payload and JavaScript chunks, without any additional requests to the server
+  - Static rendering is great for performance and use cases include blogs, documentation, marketing pages etc.
+
+---
+
+## 53 : Dynamic Rendering
+- Dynamic rendering is a server rendering strategy where routes are rendered for each user at request time
+- It is useful when a route has data that is personalized to the user or contains information that can only be known at request time, such as cookies or the URL's search parameters
+- News websites, personalized e-commerce pages, and social media feeds are some examples where dynamic rendering is beneficial
+
+- How to Dynamically Render
+  - During rendering, if a dynamic function is discovered, Next.js will switch to dynamically rendering the whole route
+  - In Next.js, these dynamic functions are: cookies(), headers(), and searchParams
+  - Using any of these will opt the whole route into dynamic rendering at request time
+
+- Summary
+- Dynamic rendering is a strategy where the HTML is generated at request time
+- Next.js automatically switches to dynamic rendering when it comes across a dynamic function in the component, such as cookies() headers(), or the searchParams object
+- This form of rendering is great for when we need to render HTML personalized to a user, such as a social media feed
+- As a developer, you do not need to choose between static and dynamic rendering. Next.js will automatically choose the best rendering strategy for each route based on the features and APIs used
+
+---
+
+## 54 : Streaming
+- Streaming is a strategy that allows for progressive Ul rendering from the server
+- Work is divided into chunks and streamed to the client as soon as it's ready
+- This enables users to see parts of the page immediately, before the entire content has finished rendering
+- Streaming significantly improves both the initial page loading performance and the rendering of Ul elements that rely on slower data fetches, which would otherwise block the rendering of the entire route
+- Streaming is integrated into the Next.js App Router by default
+
