@@ -707,3 +707,56 @@
 - Streaming significantly improves both the initial page loading performance and the rendering of Ul elements that rely on slower data fetches, which would otherwise block the rendering of the entire route
 - Streaming is integrated into the Next.js App Router by default
 
+---
+
+## 55 : Server and Client Composition Patterns
+- Server Components
+  - Fetching data
+  - Directly accessing backend resources
+  - Protecting sensitive information (like access tokens and API keys) on the server
+  - Keeping large dependencies server-side, which helps in reducing client-side JavaScript.
+
+- Client Components
+  - Adding interactivity
+  - Handling event listeners (such as onClick(), onChange(), etc)
+  - Managing state and lifecycle effects (using hooks like useState(), useReducer(), useEffect())
+  - Using browser-exclusive APIs
+  - Using custom hooks
+  - Using React Class components.
+
+---
+
+## 56 : Server only Code
+- Certain code is intended to execute only on the server
+- You might have modules or functions that use multiple libraries, use environment variables, interact directly with a database, or process confidential information
+- Since JavaScript modules can be shared, it's possible for code that's meant only for the server to unintentionally end up in the client
+- If server-side code gets bundled into the client-side JavaScript, it could lead to a bloated bundle size, expose secret keys, database queries, and sensitive business logic
+- It is crucial to separate server-only code from client-side code to protect the application's security and integrity
+
+- Server only Package
+  - Provide a build-time error if developers accidentally import one of these modules into a Client Component
+
+---
+
+## 57 : Third Party Packages
+- Third Party Packages
+  - Third-party packages in the ecosystem are gradually adapting, beginning to add the "use client" directive to components that rely on client-only features, marking a clear distinction in their execution environment
+  - Many components from pm packages, which traditionally leverage client-side features, haven't yet integrated this directive
+  - The absence of "use client" means that while these components will function correctly in Client Components, they may encounter issues or might not work at all within Server Components
+  - To address this, you can wrap third-party components that rely on client-only features in your own Client Components
+
+- When you want to use a third party package in server side code then it will give you error if the third party package is client side and if you want to use client side code in server side code then you have to encapsulate the third-party components.
+
+- To do that you need to create a new file in other folder like components folder and create a new file for that client side code and make to write "use client" at the top of the file to make that file client side then simply import that file in your server side code.
+
+- With this method if you want to add a single or more client side code in your server side code then you can add and your code will still remain as server side code
+
+- Go through vedio once to have better understanding
+
+---
+
+## 58 : Context Provider
+- Context providers are typically rendered near the root of an application to share global application state and logic for example, the application theme
+- However, since React context is not supported in Server Components, attempting to create a context at the root of your application will result in an error
+- To address this, you can create a context and render its provider inside a separate Client Component
+
