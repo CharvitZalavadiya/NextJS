@@ -760,3 +760,12 @@
 - However, since React context is not supported in Server Components, attempting to create a context at the root of your application will result in an error
 - To address this, you can create a context and render its provider inside a separate Client Component
 
+---
+
+## 59 : Client-only Code
+- Simply add dependency named "client-only" and import it to your file for using that component as client side component
+
+---
+
+## 60 : Client Component Placement
+-
